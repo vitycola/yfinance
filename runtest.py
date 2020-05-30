@@ -19,7 +19,7 @@ import yfinance as yf
 
 
 def test_yfinance():
-    for symbol in ['MSFT', 'IWO', 'VFINX', '^GSPC', 'BTC-USD']:
+    for symbol in ['MSFT', 'AAPL', 'MMM']:
         print(">>", symbol, end=' ... ')
         ticker = yf.Ticker(symbol)
 
@@ -28,11 +28,11 @@ def test_yfinance():
         assert(ticker.history(period="max").empty is False)
 
         # following should always gracefully handled, no crashes
-        ticker.cashflow
+        assert(ticker.cashflow.empty is False)
         assert(ticker.balance_sheet.empty is False)
-        ticker.financials
-        ticker.sustainability
-        ticker.major_holders
+        assert(ticker.financials.empty is False)
+        assert(ticker.sustainability.empty is False)
+        assert(ticker.major_holders.empty is False)
         ticker.institutional_holders
 
         print("OK")
