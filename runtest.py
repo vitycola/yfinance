@@ -29,7 +29,7 @@ def test_yfinance():
 
         # following should always gracefully handled, no crashes
         ticker.cashflow
-        ticker.balance_sheet
+        assert(ticker.balance_sheet.empty is False)
         ticker.financials
         ticker.sustainability
         ticker.major_holders
